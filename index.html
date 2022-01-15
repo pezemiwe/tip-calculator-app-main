@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./style.css">
+  
+  <title>Frontend Mentor | Tip calculator app</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+  <div id="items">
+    <div class="logo"><img src="./images/logo.svg" alt="" class="spliter"></div>
+    <div class="content">
+      <div class="firstbox">
+         <div class="bill">
+          <div class="text">Bill</div>
+          <div id="box"><input class="box" id="boxa" maxlength="6"  placeholder="0">
+            <div class="dollar"><img src="./images/icon-dollar.svg" alt="" id="dollar">
+            </div>
+            </input>
+            </div>
+        </div>
+        <div class="percent">
+           <div class="text">Select Tip %</div>
+           <div class="grid-container">
+             <div class="grid-item" id="fivecent">5%</div>
+             <div class="grid-item" id="tencent">10%</div>
+             <div class="grid-item" id="fifcent">15%</div>
+             <div class="grid-item" id="twencent">25%</div>
+             <div class="grid-item" id="fiftycent">50%</div>
+             <input type="text" class="custom" placeholder="Custom" id="anycent"></input>
+           </div> 
+        </div>
+
+        <div class="people">
+          <div class="txt">
+            <div class="texta">Number of People</div>
+            <div class="textb">Enter a valid input!</div>
+          </div>
+          <div id="box">
+            <input class="box" id="boxb" placeholder="0">
+              <div class="dollar"><img src="./images/icon-person.svg" alt="" id="dollar">
+              </div>
+            </input>
+          </div> 
+        </div>
+      </div>
+      <div class="secondbox">
+        <div class="tip">
+          <div class="tipamount">
+            <div class="amount">Tip Amount</div>
+            <div class="person">/ person</div>
+          </div>
+          <div class="metric" id="metrica">$0.00</div>
+        </div>
+        <div class="tip">
+          <div class="total">
+            <div class="amount">Total</div>
+            <div class="person">/ person</div>
+          </div>
+          <div class="metric" id="metricb">$0.00</div>
+        </div>
+        <button class="reset" id="reset">Reset</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bill
+
+  Select Tip %
+  5%
+  10%
+  15%
+  25%
+  50%
+  Custom
+
+  Number of People
+
+  Tip Amount
+  / person
+
+  Total
+  / person
+
+  Reset
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+  <script src="./app.js"></script>
+</body>
+</html>
