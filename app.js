@@ -1,88 +1,64 @@
 let firstValue = document.getElementById("metrica");
-
 let secondValue = document.getElementById("metricb");
-
 let buttons = document.querySelectorAll(".grid-item");
+let customInput = document.getElementById("anycent");
+
 
 function calculateTip(number) {
-let billAmount = document.getElementById("boxa").value.trim();
-let noOfPersons = document.getElementById("boxb").value.trim();
-// let tipAmount = document.getElementById("metrica").value;
-// let total = document.getElementById("metricb").value;
-let billPerPerson = parseFloat(billAmount) / parseInt(noOfPersons);
-let percentage = number / 100;
-let AmountOfTip = billPerPerson * percentage; 
-let totalPerPerson = billPerPerson + AmountOfTip;
+  let billAmount = document.getElementById("boxa").value.trim();
+  let noOfPersons = document.getElementById("boxb").value.trim();
+  let billPerPerson = parseFloat(billAmount) / parseInt(noOfPersons);
+  let percentage = number / 100;
+  let AmountOfTip = billPerPerson * percentage;
+  let totalPerPerson = billPerPerson + AmountOfTip;
+  firstValue.innerText = "$" + " " + AmountOfTip.toFixed(2);
+  secondValue.innerText = "$" + " " + totalPerPerson.toFixed(2);
+}
 
-
-document.getElementById("metrica").innerText = "$" + " " + AmountOfTip.toFixed(2);
-document.getElementById("metricb").innerText = "$" + " " + totalPerPerson.toFixed(2);
-
-};
-
-const parent = document.querySelector(".people");
-let customNumber = document.getElementById("anycent").value.trim();
+let inputBox = document.getElementById("boxb");
+const err = document.querySelector(".textb");
 const outputError = () => {
-    parent.classList.add("error");
+  err.classList.add("error");
+  inputBox.classList.add("error2");
 };
 
 const outputSuccess = () => {
-    parent.classList.remove("error");
+  err.classList.remove("error");
+  inputBox.classList.remove("error2");
 };
 
-// const numCheck = () => {
-//     let noOfPersons = document.getElementById("boxb").value();
-//     if (noOfPersons === 0 || noOfPersons === " " ) {
-//         outputError();
-//     } else { 
-//         outputSuccess();
-//     }
-// };
-
-
-
-document.getElementById("fivecent").onclick = function() {
-
-    calculateTip(5);
+const customInputFunction = () => {
+  let customInputValue = parseInt(customInput.value);
+  if (customInputValue < 1) {
+    outputError();
+  } else {
+    outputSuccess();
+    calculateTip(customInputValue);
+  }
 };
+customInput.addEventListener("input", customInputFunction);
 
-document.getElementById("tencent").onclick = function() {
-
-    calculateTip(10);
-};
-
-document.getElementById("fifcent").onclick = function() {
-
-    calculateTip(15);
-};
-
-document.getElementById("twencent").onclick = function() {
-
-    calculateTip(25);
-};
-
-document.getElementById("fiftycent").onclick = function() {
-
-    calculateTip(50);
-};
-
-document.getElementById("anycent").oninput = function() {
-    if (customNumber !== '') {
-    calculateTip(customNumber);
-    }
-};
+buttons.forEach(button => {
+    button.addEventListener("click", () => {
+        if (inputBox.value === ""  || inputBox.value === "0") {
+            outputError();
+          } else {
+              outputSuccess();
+          }
+        calculateTip(Number(button.id));
+    });
+});
 
 
 function toReset() {
-    document.getElementById("anycent").value = '';
-    document.getElementById("boxa").value = '';
-    document.getElementById("boxb").value = '';
-    document.getElementById("metrica").innerHTML = "$" + "0.00";
-    document.getElementById("metricb").innerHTML = "$" + "0.00";
-};
+  document.getElementById("anycent").value = "";
+  document.getElementById("boxa").value = "";
+  document.getElementById("boxb").value = "";
+  document.getElementById("metrica").innerHTML = "$" + "0.00";
+  document.getElementById("metricb").innerHTML = "$" + "0.00";
+}
 
-document.getElementById("reset").onclick = function() {
-    toReset();
-
-    outputSuccess();
+document.getElementById("reset").onclick = function () {
+  toReset();
+  outputSuccess();
 };
